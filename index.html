@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/globals.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>StreamCRM Dashboard</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="logo">
+          <img src="img/IMAGE.png" alt="StreamCRM Logo" />
+          <h1>StreamCRM</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="active">
+              <a href="#panel-principal">
+                <img src="img/image.svg" alt="Panel Principal Icon" />
+                Panel Principal
+              </a>
+            </li>
+            <li>
+              <a href="#bandeja-entrada">
+                <img src="img/frame-3.svg" alt="Bandeja de Entrada Icon" />
+                Bandeja de Entrada
+              </a>
+            </li>
+            <li>
+              <a href="#gestion-prospectos">
+                <img src="img/svgrepo-iconcarrier.png" alt="Gestión Prospectos Icon" />
+                Gestión Prospectos
+              </a>
+            </li>
+            <li>
+              <a href="#clientes-activos">
+                <img src="img/frame-2.svg" alt="Clientes Activos Icon" />
+                Clientes Activos
+              </a>
+            </li>
+            <li>
+              <a href="#reportes-analisis">
+                <img src="img/frame.svg" alt="Reportes y Análisis Icon" />
+                Reportes y Análisis
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="user-info">
+          <img src="img/image.png" alt="User Avatar" />
+          <div>
+            <p class="user-name">Alex Smith</p>
+            <p class="user-role">Vendedor Senior</p>
+          </div>
+        </div>
+      </aside>
+      <main class="main-content">
+        <section class="stats-overview">
+          <div class="stat-card">
+            <h2>Prospectos Nuevos</h2>
+            <p class="stat-value">15</p>
+            <p class="stat-period">Este mes</p>
+          </div>
+          <div class="stat-card">
+            <h2>Clientes Activos</h2>
+            <p class="stat-value">4</p>
+            <p class="stat-period">Este mes</p>
+          </div>
+          <div class="stat-card">
+            <h2>Tareas Atrasadas</h2>
+            <p class="stat-value">2</p>
+            <p class="stat-period">A la fecha</p>
+          </div>
+          <div class="stat-card">
+            <h2>Tasa de Conversión</h2>
+            <p class="stat-value">68%</p>
+            <p class="stat-period">Este mes</p>
+          </div>
+        </section>
+        <section class="activity-tasks">
+          <div class="recent-activity">
+            <h2>Actividad Reciente</h2>
+            <a href="#" class="view-all">Ver todo</a>
+            <ul>
+              <li>
+                <img src="img/envelope.svg" alt="Message Icon" />
+                <div>
+                  <p>Nuevo mensaje de Ana Martínez</p>
+                  <span>5 min</span>
+                </div>
+              </li>
+              <li>
+                <img src="img/person-add.svg" alt="New Prospect Icon" />
+                <div>
+                  <p>Nuevo prospecto registrado</p>
+                  <span>15 min</span>
+                </div>
+              </li>
+              <li>
+                <img src="img/person-check.svg" alt="Client Registered Icon" />
+                <div>
+                  <p>Prospecto registrado como cliente</p>
+                  <span>1 hora</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="pending-tasks">
+            <h2>Tareas Pendientes</h2>
+            <a href="#" class="view-all">Ver todas</a>
+            <ul>
+              <li>
+                <p>Llamar a Juan Pérez</p>
+                <span class="priority high">Alta</span>
+              </li>
+              <li>
+                <p>Enviar propuesta a María Cortez</p>
+                <span class="priority medium">Media</span>
+              </li>
+              <li>
+                <p>Seguimiento Carlos López</p>
+                <span class="priority low">Baja</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="prospects-messages">
+          <div class="latest-prospects">
+            <h2>Últimos Prospectos</h2>
+            <a href="#" class="view-all">Ver todos</a>
+            <ul>
+              <li>
+                <div>
+                  <p class="prospect-name">Juan Pérez</p>
+                  <p class="prospect-email">juan@ejemplo.com</p>
+                </div>
+                <span class="status new">Nuevo</span>
+              </li>
+              <li>
+                <div>
+                  <p class="prospect-name">María García</p>
+                  <p class="prospect-email">maria@ejemplo.com</p>
+                </div>
+                <span class="status negotiating">Negociando</span>
+              </li>
+              <li>
+                <div>
+                  <p class="prospect-name">Carlos López</p>
+                  <p class="prospect-email">carlos@ejemplo.com</p>
+                </div>
+                <span class="status accepted">Aceptado</span>
+              </li>
+            </ul>
+          </div>
+          <div class="recent-messages">
+            <h2>Mensajes Recientes</h2>
+            <a href="#" class="view-all">Ver todos</a>
+            <ul>
+              <li>
+                <div>
+                  <p class="sender-name">Ana Martínez</p>
+                  <p class="message-preview">Consulta sobre plan</p>
+                </div>
+                <div class="message-info">
+                  <span class="date">2024-01-14</span>
+                  <img src="img/subtract.svg" alt="Read Status" class="read-status" />
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="sender-name">Carlos López</p>
+                  <p class="message-preview">Confirmación suscripción</p>
+                </div>
+                <div class="message-info">
+                  <span class="date">2024-01-15</span>
+                  <img src="img/done-all-alt-round.svg" alt="Read Status" class="read-status" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
