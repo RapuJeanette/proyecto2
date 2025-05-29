@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StreamCRM - Registro de Servicio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./agendar-style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">S</div>
+          <div class="logo-text">StreamCRM</div>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+      <a href="/PanelPrincipal/index.html" class="nav-item">
+        <img class="frame7" src="frame1.svg" />
+        Panel Principal
+      </a>
+      <a href="/BandejaEntrada/index.html" class="nav-item">
+        <img class="frame7" src="frame2.svg" />
+        Bandeja de Entrada
+      </a>
+       <a href="/Lista_prospectos/index.html" class="nav-item">
+        <img class="frame7" src="frame3.svg" />
+        Gestión Prospectos
+       </a>
+      <a href="/ClientesActivos/index.html" class="nav-item">
+        <img class="frame7" src="frame4.svg" />
+        Clientes Activos
+      </a>
+      <a href="/ReportesAnalisis/index.html" class="nav-item">
+        <img class="frame8" src="frame5.svg" />
+        Reportes y Análisis
+      </a>
+    </nav>
+
+      <div class="user-profile">
+        <div class="user-avatar">AS</div>
+        <div class="user-info">
+          <h4>Alex Smith</h4>
+          <p>Vendedor Senior</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="agenda-container">
+      <h2 class="agenda-title">Registro de Servicio</h2>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Prospecto</label>
+        <p class="agenda-subtext">María García – maria@ejemplo.com</p>
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Nombre del servicio</label>
+        <select class="input-field">
+          <option value="">Seleccionar servicio</option>
+          <option>Netflix</option>
+          <option>Max</option>
+          <option>Disney+</option>
+          <option>Amazon Prime</option>
+          <option>HBO</option>
+        </select>
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Tipo de plan</label>
+        <select class="input-field">
+          <option value="">Seleccionar plan</option>
+          <option>Individual</option>
+          <option>Familiar</option>
+        </select>
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Duración del plan</label>
+        <select class="input-field">
+          <option value="">Seleccionar duración</option>
+          <option>1 mes</option>
+          <option>3 meses</option>
+          <option>6 meses</option>
+          <option>1 año</option>
+        </select>
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Fecha de inicio de servicio</label>
+        <input type="date" class="input-field" id="fechaInicio" min="" />
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Método de pago</label>
+        <select class="input-field">
+          <option value="">Seleccionar método</option>
+          <option>QR</option>
+          <option>Tarjeta</option>
+          <option>Efectivo</option>
+        </select>
+      </div>
+
+      <div class="agenda-grid">
+        <div class="agenda-field">
+          <label>Monto pagado</label>
+          <input type="number" class="input-field" placeholder="Ej. 25.00" />
+        </div>
+        <div class="agenda-field">
+          <label>Código de promoción</label>
+          <input type="text" class="input-field" placeholder="Ej. PROMO25" />
+        </div>
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Actualizar estado</label>
+        <select class="input-field" id="estadoSelect">
+          <option value="">Seleccionar estado</option>
+          <option>Nuevo</option>
+          <option>Interesado</option>
+          <option>Negociando</option>
+          <option>Aceptado</option>
+          <option>Rechazado</option>
+          <option>En espera</option>
+        </select>
+      </div>
+
+      <div class="agenda-buttons">
+        <button class="btn guardar-btn">Guardar</button>
+        <button class="btn cancelar-btn">Cancelar</button>
+      </div>
+    </div>
+
+    <script>
+      // Establecer la fecha mínima como hoy
+      document.addEventListener("DOMContentLoaded", function () {
+        const fechaInput = document.getElementById("fechaInicio");
+        const hoy = new Date().toISOString().split("T")[0];
+        fechaInput.min = hoy;
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const estadoSelect = document.getElementById("estadoSelect");
+        estadoSelect.value = "Aceptado";
+
+        estadoSelect.addEventListener("change", function () {
+          estadoSelect.value = "Aceptado";
+          alert("El estado no puede ser cambiado en esta etapa.");
+        });
+      });
+    </script>
+  </body>
+</html>

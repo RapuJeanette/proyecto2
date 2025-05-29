@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StreamCRM - Registro de Rechazo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./agendar-style.css" />
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">S</div>
+          <div class="logo-text">StreamCRM</div>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/PanelPrincipal/index.html" class="nav-item">
+          <img class="frame7" src="frame1.svg" />
+          Panel Principal
+        </a>
+        <a href="/BandejaEntrada/index.html" class="nav-item">
+          <img class="frame7" src="frame2.svg" />
+          Bandeja de Entrada
+        </a>
+        <a href="/Lista_prospectos/index.html" class="nav-item">
+          <img class="frame7" src="frame3.svg" />
+          Gestión Prospectos
+        </a>
+        <a href="/ClientesActivos/index.html" class="nav-item">
+          <img class="frame7" src="frame4.svg" />
+          Clientes Activos
+        </a>
+        <a href="/ReportesAnalisis/index.html" class="nav-item">
+          <img class="frame8" src="frame5.svg" />
+          Reportes y Análisis
+        </a>
+      </nav>
+
+      <div class="user-profile">
+        <div class="user-avatar">AS</div>
+        <div class="user-info">
+          <h4>Alex Smith</h4>
+          <p>Vendedor Senior</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="agenda-container">
+      <h2 class="agenda-title">Registro de Rechazo</h2>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Prospecto</label>
+        <p class="agenda-subtext">Carlos Pérez – carlos@ejemplo.com</p>
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Razón del rechazo</label>
+        <select
+          class="input-field"
+          id="razonSelect"
+          onchange="mostrarOtraRazon()"
+        >
+          <option value="">Seleccionar razón</option>
+          <option>Precio elevado</option>
+          <option>No está interesado</option>
+          <option>Ya tiene servicio</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="agenda-section hidden" id="otraRazonInput">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Especificar otra razón"
+        />
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">¿Intentar nuevo seguimiento?</label>
+        <select
+          class="input-field"
+          id="seguimientoSelect"
+          onchange="controlarEstado()"
+        >
+          <option value="">Seleccionar opción</option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <div class="agenda-section">
+        <label class="agenda-label">Actualizar estado</label>
+        <select class="input-field" id="estadoSelect">
+          <option value="">Seleccionar estado</option>
+          <option>Nuevo</option>
+          <option>Interesado</option>
+          <option>Negociando</option>
+          <option>Aceptado</option>
+          <option>Rechazado</option>
+          <option>En espera</option>
+        </select>
+      </div>
+
+      <div class="agenda-buttons">
+        <button class="btn guardar-btn">Guardar</button>
+        <button class="btn cancelar-btn">Cancelar</button>
+      </div>
+    </div>
+
+    <script>
+      function mostrarOtraRazon() {
+        const select = document.getElementById("razonSelect");
+        const input = document.getElementById("otraRazonInput");
+        if (select.value === "otro") {
+          input.classList.remove("hidden");
+        } else {
+          input.classList.add("hidden");
+        }
+      }
+
+      function controlarEstado() {
+    const seguimiento = document.getElementById("seguimientoSelect").value;
+    const estadoSelect = document.getElementById("estadoSelect");
+
+    if (seguimiento === "no") {
+      estadoSelect.innerHTML = '<option value="rechazado">Rechazado</option>';
+      estadoSelect.disabled = true;
+    } else if (seguimiento === "si") {
+      estadoSelect.innerHTML = '<option value="en-espera">En espera</option>';
+      estadoSelect.disabled = false;
+    } else {
+      estadoSelect.innerHTML = '<option value="">Seleccionar estado</option>';
+      estadoSelect.disabled = true;
+    }
+  }
+    </script>
+  </body>
+</html>

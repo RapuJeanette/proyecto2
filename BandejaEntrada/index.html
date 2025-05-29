@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StreamCRM - Bandeja de Entrada</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./inbox-style.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">S</div>
+          <div class="logo-text">StreamCRM</div>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="/PanelPrincipal/index.html" class="nav-item">
+          <img class="frame7" src="frame1.svg" />
+          Panel Principal
+        </a>
+        <a href="/BandejaEntrada/index.html" class="nav-item active">
+          <img class="frame7" src="icon-email.svg" />
+          Bandeja de Entrada
+        </a>
+        <a href="/Lista_prospectos/index.html" class="nav-item">
+          <img class="frame7" src="frame3.svg" />
+          Gestión Prospectos
+        </a>
+        <a href="/ClientesActivos/index.html" class="nav-item">
+          <img class="frame7" src="frame4.svg" />
+          Clientes Activos
+        </a>
+        <a href="/ReportesAnalisis/index.html" class="nav-item">
+          <img class="frame8" src="frame5.svg" />
+          Reportes y Análisis
+        </a>
+      </nav>
+
+      <div class="user-profile">
+        <div class="user-avatar">AS</div>
+        <div class="user-info">
+          <h4>Alex Smith</h4>
+          <p>Vendedor Senior</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="inbox-header">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+          "
+        >
+          <h1 class="page-title">Bandeja de Entrada</h1>
+        </div>
+      </div>
+
+      <div class="inbox-container">
+        <div id="inboxContainer">
+          <!-- Inbox items will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const inboxData = [
+        {
+          id: 1,
+          type: "call",
+          title: "Llamar a cliente potencial",
+          description:
+            "Seguimiento de propuesta comercial con empresa ABC para nuevo proyecto de software",
+          time: "2025-01-14 10:30",
+          unread: true,
+        },
+        {
+          id: 2,
+          type: "email",
+          title: "Nueva cotización recibida",
+          description:
+            "Respuesta de cotización #RT45 para implementación de sistema CRM",
+          time: "2025-01-14 09:15",
+          unread: true,
+        },
+        {
+          id: 3,
+          type: "meeting",
+          title: "Reunión de equipo",
+          description: "Revisión de metas mensuales y planificación Q1 2024",
+          time: "2025-01-14 08:00",
+          unread: false,
+        },
+        {
+          id: 4,
+          type: "contact",
+          title: "Nueva solicitud de contacto",
+          description:
+            "María González de Tecnología Innovadora quiere conectar",
+          time: "2025-01-14 16:45",
+          unread: true,
+        },
+        {
+          id: 5,
+          type: "update",
+          title: "Actualización de contacto",
+          description:
+            "Pedro Martínez actualizó su información de contacto y prefiere ser contactado por WhatsApp",
+          time: "2025-01-14 15:20",
+          unread: false,
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        renderInbox();
+      });
+
+      function renderInbox() {
+        const container = document.getElementById("inboxContainer");
+
+        container.innerHTML = inboxData
+          .map(
+            (item) => `
+                <div class="inbox-item ${
+                  item.unread ? "unread" : "read"
+                }" onclick="markAsRead(${item.id})">
+                    <div class="item-icon ${item.type}">
+                        ${getIcon(item.type)}
+                    </div>
+                    <div class="item-content">
+                        <div class="item-title">${item.title}</div>
+                        <div class="item-description">${item.description}</div>
+                        <div class="item-time">${formatTime(item.time)}</div>
+                    </div>
+                    <div class="read-status">
+  <img src="${
+    item.unread ? "icon-unread.svg" : "icon-read.svg"
+  }" class="svg-icon" alt="${item.unread ? "No leído" : "Leído"}">
+</div>
+
+                </div>
+            `
+          )
+          .join("");
+      }
+
+      function getIcon(type) {
+        const icons = {
+          call: "icon-call.svg",
+          email: "icon-email.svg",
+          meeting: "icon-meeting.svg",
+          contact: "icon-contact.svg",
+          update: "icon-email.svg",
+        };
+        const src = icons[type] || "icon-default.svg";
+        return `<img src="${src}" class="svg-icon" alt="${type}">`;
+      }
+
+      function markAsRead(id) {
+        const item = inboxData.find((item) => item.id === id);
+        if (item) {
+          item.unread = false;
+          renderInbox();
+        }
+      }
+
+      function formatTime(timeStr) {
+        const date = new Date(timeStr);
+        const now = new Date();
+        const today = now.toDateString();
+        const messageDate = date.toDateString();
+
+        if (today === messageDate) {
+          return date.toLocaleTimeString("es-ES", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+        } else {
+          return (
+            date.toLocaleDateString("es-ES", {
+              month: "2-digit",
+              day: "2-digit",
+            }) +
+            " " +
+            date.toLocaleTimeString("es-ES", {
+              hour: "2-digit",
+              minute: "2-digit",
+            })
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
