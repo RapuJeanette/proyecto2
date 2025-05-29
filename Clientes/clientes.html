@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamCRM - Clientes Activos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="clientes.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <div class="logo-text">StreamCRM</div>
+            </div>
+        </div>
+        
+        <nav class="nav-menu">
+            <div class="nav-item">
+                <img class="frame7" src="frame1.svg" />
+                Panel Principal
+            </div>
+            <div class="nav-item">
+                <img class="frame7" src="frame2.svg" />
+                Bandeja de Entrada
+            </div>
+            <div class="nav-item">
+                <img class="frame7" src="frame3.svg" />
+                Gestión Prospectos
+            </div>
+            <div class="nav-item active">
+                <img class="frame7" src="frame4.svg" />
+                Clientes Activos
+            </div>
+            <div class="nav-item">
+                <img class="frame8" src="frame5.svg" />
+                Reportes y Análisis
+            </div>
+        </nav>
+
+        <div class="user-profile">
+            <div class="user-avatar">AS</div>
+            <div class="user-info">
+                <h4>Alex Smith</h4>
+                <p>Vendedor Senior</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Clientes Activos</h1>
+        </div>
+
+        <!-- Filter Tabs and Search -->
+        <div class="controls-section">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="prueba-gratuita">
+                    <span>Prueba Gratuita</span>
+                    <span class="tab-count" id="pruebaCount">2</span>
+                </button>
+                <button class="filter-tab" data-filter="suscripcion-activa">
+                    <span>Suscripción Activa</span>
+                    <span class="tab-count" id="suscripcionCount">2</span>
+                </button>
+            </div>
+
+            <div class="search-filter-section">
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar cliente">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="8" stroke="#9CA3AF" stroke-width="2"/>
+                        <path d="m21 21-4.35-4.35" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <button class="filter-btn" id="filterButton">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="filter-dropdown" id="filterDropdown">
+                    <div class="filter-dropdown-header">Ordenar por:</div>
+                    <div class="filter-option" data-sort="nombre">
+                        <span>Nombre</span>
+                    </div>
+                    <div class="filter-option" data-sort="fecha">
+                        <span>Fecha de finalización</span>
+                    </div>
+                    <div class="filter-option" data-sort="contacto">
+                        <span>Último contacto</span>
+                    </div>
+                    <div class="filter-divider"></div>
+                    <div class="filter-option clear-filter" onclick="clearSort()">
+                        <span>Limpiar ordenamiento</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6l12 12" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clients Container -->
+        <div class="clients-container" id="clientsContainer">
+            <!-- Client cards will be populated by JavaScript -->
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-icon">👥</div>
+            <div class="no-results-text">No se encontraron clientes con los criterios de búsqueda</div>
+        </div>
+    </div>
+
+    <script src="clientes.js"></script>
+</body>
+</html>
