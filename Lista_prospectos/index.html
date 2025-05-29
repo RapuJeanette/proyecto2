@@ -29,7 +29,7 @@
           Bandeja de Entrada
         </div>
         <div class="nav-item active">
-          <img class="frame7" src="frame3.svg" />
+          <img class="frame7" src="frame11.svg" />
           Gestión Prospectos
         </div>
         <div class="nav-item">
@@ -197,6 +197,12 @@
     document.querySelectorAll('.prospect-table tbody tr').forEach((row) => {
       const estado = row.querySelector('.estado-tag')?.textContent.toLowerCase();
       row.style.display = (filtro === '' || estado === filtro) ? '' : 'none';
+    });
+  });
+
+  document.querySelectorAll('.btn-detalles').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      window.location.href = '../Detalles_prospectos/index.html';
     });
   });
 </script>

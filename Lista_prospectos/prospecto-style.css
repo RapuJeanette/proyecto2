@@ -116,6 +116,16 @@ body {
     font-size: 12px;
 }
 
+.nav-item:hover, .nav-item.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.nav-item.active {
+    background: #f1f5f9;
+    color: #353535;
+}
+
 .container {
   flex: 1;
   padding: 30px;
