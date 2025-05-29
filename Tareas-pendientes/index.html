@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StreamCRM - Tareas Pendientes</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -52,20 +51,15 @@
 
     <!-- Main Content -->
     <div class="main-content">
+        <!-- Header -->
         <div class="page-header">
             <h1 class="page-title">Tareas Asignadas</h1>
-            <div class="header-actions">
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar tareas...">
-                </div>
-                <button class="filter-btn">
-                    <span>🔍</span>
-                </button>
-                <button class="update-btn" onclick="updateData()">
-                    <img class="frame" src="frame0.svg" />
-                    Actualizar
-                </button>
-            </div>
+            <button class="update-btn" onclick="updateData()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 10C21 10 18.995 7.26822 17.3662 5.63824C15.7373 4.00827 13.4864 3 11 3C6.02944 3 2 7.02944 2 12C2 16.9706 6.02944 21 11 21C15.1031 21 18.5649 18.2543 19.6482 14.5M21 10V4M21 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Actualizar
+            </button>
         </div>
 
         <!-- Filter Tabs -->
@@ -80,33 +74,98 @@
         <div class="stats-container">
             <div class="stats-card">
                 <div class="chart-container">
-                    <canvas id="completionChart" class="chart-canvas"></canvas>
+                    <canvas id="completionChart" class="chart-canvas" width="120" height="120"></canvas>
                     <div class="chart-center">
                         <div class="chart-percentage" id="completionPercentage">70%</div>
                         <div class="chart-label">Completado</div>
                     </div>
                 </div>
                 <div class="stats-text">
-                    <div class="stats-title">Total de Tareas: <span id="totalTasks">11</span></div>
-                    <div class="stats-item">Completadas: <span id="completedTasks">8</span></div>
-                    <div class="stats-item">Pendientes: <span id="pendingTasks">3</span></div>
-                    <div class="stats-item">Atrasadas: <span id="overdueTasks">2</span></div>
+                    <div class="stats-list">
+                        <div class="stats-main">Total de Tareas: <span id="totalTasks">11</span></div>
+                        <div class="stats-item">Completadas: <span id="completedTasks">8</span></div>
+                        <div class="stats-item">Pendientes: <span id="pendingTasks">3</span></div>
+                        <div class="stats-item">Atrasadas: <span id="overdueTasks">2</span></div>
+                    </div>
                 </div>
             </div>
 
             <div class="stats-card">
                 <div class="chart-container">
-                    <canvas id="priorityChart" class="chart-canvas"></canvas>
+                    <canvas id="priorityChart" class="chart-canvas" width="120" height="120"></canvas>
                     <div class="chart-center">
                         <div class="chart-percentage" id="priorityPercentage">50%</div>
                         <div class="chart-label">Prioridad Alta</div>
                     </div>
                 </div>
                 <div class="stats-text">
-                    <div class="stats-title">Distribución de Prioridades</div>
-                    <div class="stats-item">Prioridad Alta: <span id="highPriority">4</span></div>
-                    <div class="stats-item">Prioridad Media: <span id="mediumPriority">1</span></div>
-                    <div class="stats-item">Prioridad Baja: <span id="lowPriority">3</span></div>
+                    <div class="stats-list">
+                        <div class="stats-main">Prioridad Alta: <span id="highPriority">4</span></div>
+                        <div class="stats-item">Prioridad Media: <span id="mediumPriority">1</span></div>
+                        <div class="stats-item">Prioridad Baja: <span id="lowPriority">3</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-filter-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="8" stroke="#9CA3AF" stroke-width="2"/>
+                    <path d="m21 21-4.35-4.35" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="filter-dropdown-container">
+                <button class="filter-btn" id="filterButton">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="filter-dropdown" id="filterDropdown">
+                    <div class="filter-dropdown-header">Filtrar por:</div>
+                    <div class="filter-option" data-filter="fecha" onclick="toggleSortOrder('fecha')">
+                        <span>Fecha límite</span>
+                        <svg class="sort-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5v14m-7-7l7-7 7 7" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="filter-option" data-filter="prospecto" onclick="toggleSortOrder('prospecto')">
+                        <span>Prospecto</span>
+                        <svg class="sort-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5v14m-7-7l7-7 7 7" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="filter-option" data-filter="prioridad" onclick="setAdvancedFilter('prioridad')">
+                        <span>Prioridad</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12l2 2 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="filter-submenu" id="prioritySubmenu">
+                        <div class="filter-subitem" onclick="filterByAdvanced('prioridad', 'alta')">Alta</div>
+                        <div class="filter-subitem" onclick="filterByAdvanced('prioridad', 'media')">Media</div>
+                        <div class="filter-subitem" onclick="filterByAdvanced('prioridad', 'baja')">Baja</div>
+                    </div>
+                    <div class="filter-option" data-filter="estado" onclick="setAdvancedFilter('estado')">
+                        <span>Estado</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12l2 2 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="filter-submenu" id="statusSubmenu">
+                        <div class="filter-subitem" onclick="filterByAdvanced('estado', 'pendiente')">Pendiente</div>
+                        <div class="filter-subitem" onclick="filterByAdvanced('estado', 'atrasada')">Atrasada</div>
+                        <div class="filter-subitem" onclick="filterByAdvanced('estado', 'completada')">Completada</div>
+                    </div>
+                    <div class="filter-divider"></div>
+                    <div class="filter-option clear-filter" onclick="clearAdvancedFilters()">
+                        <span>Limpiar filtros</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6l12 12" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,7 +179,7 @@
                 <div>Prioridad</div>
                 <div>Estado</div>
             </div>
-            <div id="tasksContainer">
+            <div class="tasks-body" id="tasksContainer">
                 <!-- Tasks will be populated by JavaScript -->
             </div>
         </div>
@@ -134,346 +193,6 @@
         </div>
     </div>
 
-    <script>
-        // Sample data
-        const tasksData = [
-            {
-                id: 1,
-                name: "Llamar",
-                prospect: "Juan Perez",
-                dueDate: "2024-05-15",
-                priority: "alta",
-                status: "atrasada",
-                completed: false,
-                completedDate: null
-            },
-            {
-                id: 2,
-                name: "Enviar alerta de suscripción",
-                prospect: "Carlos Ballivián",
-                dueDate: "2024-05-15",
-                priority: "alta",
-                status: "atrasada",
-                completed: false,
-                completedDate: null
-            },
-            {
-                id: 3,
-                name: "Presentar demo de plataforma",
-                prospect: "Leidy Gomez",
-                dueDate: "2024-05-16",
-                priority: "alta",
-                status: "pendiente",
-                completed: false,
-                completedDate: null
-            },
-            {
-                id: 4,
-                name: "Enviar Propuesta",
-                prospect: "María Cortez",
-                dueDate: "2024-05-16",
-                priority: "media",
-                status: "pendiente",
-                completed: false,
-                completedDate: null
-            },
-            {
-                id: 5,
-                name: "Enviar catálogo de planes",
-                prospect: "Laura Camacho",
-                dueDate: "2024-05-17",
-                priority: "baja",
-                status: "pendiente",
-                completed: false,
-                completedDate: null
-            },
-            {
-                id: 6,
-                name: "Actualizar datos de contacto",
-                prospect: "Laura Cortez",
-                dueDate: "2024-05-12",
-                priority: "baja",
-                status: "completada",
-                completed: true,
-                completedDate: "2024-05-12"
-            },
-            {
-                id: 7,
-                name: "Enviar cotización actualizada",
-                prospect: "Miguel Guerrero",
-                dueDate: "2024-05-13",
-                priority: "alta",
-                status: "completada",
-                completed: true,
-                completedDate: "2024-05-13"
-            },
-            {
-                id: 8,
-                name: "Coordinar instalación",
-                prospect: "Pedro Dominguez",
-                dueDate: "2024-05-14",
-                priority: "baja",
-                status: "completada",
-                completed: true,
-                completedDate: "2024-05-14"
-            }
-        ];
-
-        let currentFilter = 'hoy';
-        let filteredTasks = [];
-
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeCharts();
-            setupEventListeners();
-            filterTasks();
-        });
-
-        function setupEventListeners() {
-            // Filter tabs
-            document.querySelectorAll('.filter-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    currentFilter = this.dataset.filter;
-                    filterTasks();
-                });
-            });
-
-            // Search input
-            document.getElementById('searchInput').addEventListener('input', function() {
-                filterTasks();
-            });
-        }
-
-        function filterTasks() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const today = new Date();
-            const todayStr = today.toISOString().split('T')[0];
-            
-            // Get date ranges
-            const startOfWeek = new Date(today);
-            startOfWeek.setDate(today.getDate() - today.getDay());
-            const endOfWeek = new Date(startOfWeek);
-            endOfWeek.setDate(startOfWeek.getDate() + 6);
-            
-            const startOfNextWeek = new Date(endOfWeek);
-            startOfNextWeek.setDate(endOfWeek.getDate() + 1);
-            const endOfNextWeek = new Date(startOfNextWeek);
-            endOfNextWeek.setDate(startOfNextWeek.getDate() + 6);
-
-            filteredTasks = tasksData.filter(task => {
-                // Search filter
-                const matchesSearch = !searchTerm || 
-                    task.name.toLowerCase().includes(searchTerm) ||
-                    task.prospect.toLowerCase().includes(searchTerm);
-
-                if (!matchesSearch) return false;
-
-                // Date filter
-                const taskDate = new Date(task.dueDate);
-                
-                switch(currentFilter) {
-                    case 'hoy':
-                        return task.dueDate === todayStr;
-                    case 'esta-semana':
-                        return taskDate >= startOfWeek && taskDate <= endOfWeek;
-                    case 'proxima-semana':
-                        return taskDate >= startOfNextWeek && taskDate <= endOfNextWeek;
-                    case 'todas':
-                    default:
-                        return true;
-                }
-            });
-
-            renderTasks();
-            updateStats();
-            updateCharts();
-        }
-
-        function renderTasks() {
-            const container = document.getElementById('tasksContainer');
-            
-            if (filteredTasks.length === 0) {
-                container.innerHTML = '<div class="no-results">No se encontraron tareas para los criterios seleccionados</div>';
-                return;
-            }
-
-            container.innerHTML = filteredTasks.map(task => `
-                <div class="task-row">
-                    <div class="task-name">${task.name}</div>
-                    <div class="prospect-name">${task.prospect}</div>
-                    <div class="task-date">${formatDate(task.dueDate)}</div>
-                    <div class="priority-badge priority-${task.priority}">${capitalizeFirst(task.priority)}</div>
-                    <div class="status-badge status-${task.status}">${capitalizeFirst(task.status)}</div>
-                </div>
-            `).join('');
-        }
-
-        function updateStats() {
-            const total = filteredTasks.length;
-            const completed = filteredTasks.filter(task => task.completed).length;
-            const pending = filteredTasks.filter(task => !task.completed && task.status !== 'atrasada').length;
-            const overdue = filteredTasks.filter(task => task.status === 'atrasada').length;
-            
-            const highPriority = filteredTasks.filter(task => task.priority === 'alta').length;
-            const mediumPriority = filteredTasks.filter(task => task.priority === 'media').length;
-            const lowPriority = filteredTasks.filter(task => task.priority === 'baja').length;
-
-            // Update DOM
-            document.getElementById('totalTasks').textContent = total;
-            document.getElementById('completedTasks').textContent = completed;
-            document.getElementById('pendingTasks').textContent = pending;
-            document.getElementById('overdueTasks').textContent = overdue;
-            
-            document.getElementById('highPriority').textContent = highPriority;
-            document.getElementById('mediumPriority').textContent = mediumPriority;
-            document.getElementById('lowPriority').textContent = lowPriority;
-
-            // Update percentages
-            const completionPercentage = total > 0 ? Math.round((completed / total) * 100) : 0;
-            const priorityPercentage = total > 0 ? Math.round((highPriority / total) * 100) : 0;
-            
-            document.getElementById('completionPercentage').textContent = `${completionPercentage}%`;
-            document.getElementById('priorityPercentage').textContent = `${priorityPercentage}%`;
-        }
-
-        function initializeCharts() {
-            createChart('completionChart', 70, '#3498db');
-            createChart('priorityChart', 50, '#e74c3c');
-        }
-
-        function updateCharts() {
-            const total = filteredTasks.length;
-            const completed = filteredTasks.filter(task => task.completed).length;
-            const highPriority = filteredTasks.filter(task => task.priority === 'alta').length;
-
-            const completionPercentage = total > 0 ? Math.round((completed / total) * 100) : 0;
-            const priorityPercentage = total > 0 ? Math.round((highPriority / total) * 100) : 0;
-
-            createChart('completionChart', completionPercentage, '#3498db');
-            createChart('priorityChart', priorityPercentage, '#e74c3c');
-        }
-
-        function createChart(canvasId, percentage, color) {
-            const canvas = document.getElementById(canvasId);
-            const ctx = canvas.getContext('2d');
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const radius = 60;
-
-            // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Background circle
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-            ctx.strokeStyle = '#e5e7eb';
-            ctx.lineWidth = 8;
-            ctx.stroke();
-
-            // Progress arc
-            const startAngle = -Math.PI / 2;
-            const endAngle = startAngle + ((percentage / 100) * 2 * Math.PI);
-
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 8;
-            ctx.lineCap = 'round';
-            ctx.stroke();
-        }
-
-        function renderRecentTasks() {
-            const recentTasks = tasksData
-                .filter(task => task.completed)
-                .sort((a, b) => new Date(b.completedDate) - new Date(a.completedDate))
-                .slice(0, 5);
-
-            const container = document.getElementById('recentTasksContainer');
-            
-            if (recentTasks.length === 0) {
-                container.innerHTML = '<div class="no-results">No hay tareas completadas recientemente</div>';
-                return;
-            }
-
-            container.innerHTML = recentTasks.map(task => `
-                <div class="recent-task-item">
-                    <div class="recent-task-info">
-                        <div class="recent-task-name">${task.name}</div>
-                        <div class="recent-task-prospect">${task.prospect}</div>
-                    </div>
-                    <div class="recent-task-date">Completada: ${formatDate(task.completedDate)}</div>
-                </div>
-            `).join('');
-        }
-
-        function updateData() {
-            // Simular actualización de datos
-            const updateBtn = document.querySelector('.update-btn');
-            const originalText = updateBtn.innerHTML;
-            
-            updateBtn.innerHTML = '<span>⏳</span> Actualizando...';
-            updateBtn.disabled = true;
-
-            setTimeout(() => {
-                filterTasks();
-                renderRecentTasks();
-                updateBtn.innerHTML = originalText;
-                updateBtn.disabled = false;
-                
-                // Show notification
-                showNotification('Datos actualizados correctamente');
-            }, 1500);
-        }
-
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #10b981;
-                color: white;
-                padding: 12px 24px;
-                border-radius: 8px;
-                z-index: 10000;
-                font-size: 14px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            `;
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-
-        function formatDate(dateStr) {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-            });
-        }
-
-        function capitalizeFirst(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-
-        // Initialize recent tasks on load
-        document.addEventListener('DOMContentLoaded', function() {
-            renderRecentTasks();
-        });
-
-        // Resize charts when window resizes
-        window.addEventListener('resize', function() {
-            setTimeout(() => {
-                updateCharts();
-            }, 100);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
