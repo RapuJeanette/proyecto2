@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamCRM - Tareas Pendientes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <div class="logo-text">StreamCRM</div>
+            </div>
+        </div>
+        
+       <nav class="nav-menu">
+            <div class="nav-item active">
+                <img class="frame7" src="frame1.svg" />
+                Panel Principal
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\BandejaEntrada\index.html"><img class="frame7" src="frame2.svg" />
+                Bandeja de Entrada</a>
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\Lista_prospectos\index.html"><img class="frame7" src="frame3.svg" />
+                Gestión Prospectos</a>
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\Clientes\clientes.html"><img class="frame7" src="frame4.svg" />
+                Clientes</a>                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\Reportes y Analisis\reportes.html"><img class="frame8" src="frame5.svg" />
+                Reportes y Análisis</a>
+                
+            </div>
+        </nav>
+
+        <div class="user-profile">
+            <div class="user-avatar">AS</div>
+            <div class="user-info">
+                <h4>Alex Smith</h4>
+                <p>Vendedor Senior</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Tareas Asignadas</h1>
+            <button class="update-btn" onclick="updateData()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 10C21 10 18.995 7.26822 17.3662 5.63824C15.7373 4.00827 13.4864 3 11 3C6.02944 3 2 7.02944 2 12C2 16.9706 6.02944 21 11 21C15.1031 21 18.5649 18.2543 19.6482 14.5M21 10V4M21 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Actualizar
+            </button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="hoy">Hoy</button>
+            <button class="filter-tab" data-filter="esta-semana">Esta semana</button>
+            <button class="filter-tab" data-filter="proxima-semana">Próxima Semana</button>
+            <button class="filter-tab" data-filter="todas">Todas</button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-container">
+            <div class="stats-card">
+                <div class="chart-container">
+                    <canvas id="completionChart" class="chart-canvas" width="120" height="120"></canvas>
+                    <div class="chart-center">
+                        <div class="chart-percentage" id="completionPercentage">70%</div>
+                        <div class="chart-label">Completado</div>
+                    </div>
+                </div>
+                <div class="stats-text">
+                    <div class="stats-list">
+                        <div class="stats-main">Total de Tareas: <span id="totalTasks">11</span></div>
+                        <div class="stats-item">Completadas: <span id="completedTasks">8</span></div>
+                        <div class="stats-item">Pendientes: <span id="pendingTasks">3</span></div>
+                        <div class="stats-item">Atrasadas: <span id="overdueTasks">2</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <div class="chart-container">
+                    <canvas id="priorityChart" class="chart-canvas" width="120" height="120"></canvas>
+                    <div class="chart-center">
+                        <div class="chart-percentage" id="priorityPercentage">50%</div>
+                        <div class="chart-label">Prioridad Alta</div>
+                    </div>
+                </div>
+                <div class="stats-text">
+                    <div class="stats-list">
+                        <div class="stats-main">Prioridad Alta: <span id="highPriority">4</span></div>
+                        <div class="stats-item">Prioridad Media: <span id="mediumPriority">1</span></div>
+                        <div class="stats-item">Prioridad Baja: <span id="lowPriority">3</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-filter-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="8" stroke="#9CA3AF" stroke-width="2"/>
+                    <path d="m21 21-4.35-4.35" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="filter-dropdown-container">
+                <button class="filter-btn" id="filterButton">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="filter-dropdown" id="filterDropdown">
+                    <div class="filter-dropdown-header">Filtrar por:</div>
+                    <div class="filter-option" data-filter="fecha" onclick="toggleSortOrder('fecha')">
+                        <span>Fecha límite</span>
+                        <svg class="sort-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5v14m-7-7l7-7 7 7" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="filter-option" data-filter="prospecto" onclick="toggleSortOrder('prospecto')">
+                        <span>Prospecto</span>
+                        <svg class="sort-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 5v14m-7-7l7-7 7 7" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="filter-option" data-filter="prioridad" onclick="setAdvancedFilter('prioridad')">
+                        <span>Prioridad</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12l2 2 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="filter-submenu" id="prioritySubmenu">
+                        <div class="filter-subitem" onclick="filterByAdvanced('prioridad', 'alta')">Alta</div>
+                        <div class="filter-subitem" onclick="filterByAdvanced('prioridad', 'media')">Media</div>
+                        <div class="filter-subitem" onclick="filterByAdvanced('prioridad', 'baja')">Baja</div>
+                    </div>
+                    <div class="filter-option" data-filter="estado" onclick="setAdvancedFilter('estado')">
+                        <span>Estado</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12l2 2 4-4" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="filter-submenu" id="statusSubmenu">
+                        <div class="filter-subitem" onclick="filterByAdvanced('estado', 'pendiente')">Pendiente</div>
+                        <div class="filter-subitem" onclick="filterByAdvanced('estado', 'atrasada')">Atrasada</div>
+                        <div class="filter-subitem" onclick="filterByAdvanced('estado', 'completada')">Completada</div>
+                    </div>
+                    <div class="filter-divider"></div>
+                    <div class="filter-option clear-filter" onclick="clearAdvancedFilters()">
+                        <span>Limpiar filtros</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6l12 12" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks Table -->
+        <div class="tasks-container">
+            <div class="tasks-header">
+                <div>Tarea</div>
+                <div>Prospecto</div>
+                <div>Fecha límite</div>
+                <div>Prioridad</div>
+                <div>Estado</div>
+            </div>
+            <div class="tasks-body" id="tasksContainer">
+                <!-- Tasks will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Recent Tasks -->
+        <div class="recent-tasks">
+            <h3>Tareas Completadas Recientemente</h3>
+            <div id="recentTasksContainer">
+                <!-- Recent tasks will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamCRM - Panel Principal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./dashboard.css">
+</head>
+<body>
+    <!-- Sidebar - Mantenida exactamente igual -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <div class="logo-text">StreamCRM</div>
+            </div>
+        </div>
+        
+        <nav class="nav-menu">
+            <div class="nav-item active">
+                <img class="frame7" src="frame1.svg" />
+                Panel Principal
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\BandejaEntrada\index.html"><img class="frame7" src="frame2.svg" />
+                Bandeja de Entrada</a>
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\Lista_prospectos\index.html"><img class="frame7" src="frame3.svg" />
+                Gestión Prospectos</a>
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\Clientes\clientes.html"><img class="frame7" src="frame4.svg" />
+                Clientes</a>                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\Reportes y Analisis\reportes.html"><img class="frame8" src="frame5.svg" />
+                Reportes y Análisis</a>
+                
+            </div>
+        </nav>
+
+        <div class="user-profile">
+            <div class="user-avatar">AS</div>
+            <div class="user-info">
+                <h4>Alex Smith</h4>
+                <p>Vendedor Senior</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Stats Cards Row 1 -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-label">Prospectos Nuevos</div>
+                <div class="stat-period">Este mes</div>
+                <div class="stat-value" id="newProspects">15</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-label">Clientes Nuevos</div>
+                <div class="stat-period">Este mes</div>
+                <div class="stat-value" id="newClients">4</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-label">Servicio + popular</div>
+                <div class="stat-period">Este mes</div>
+                <div class="stat-value stat-service" id="popularService">Netflix</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-label">Tasa de Conversión</div>
+                <div class="stat-period">Este mes</div>
+                <div class="stat-value" id="conversionRate">68%</div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Actividad Reciente -->
+            <div class="dashboard-card large-card">
+                <div class="card-header">
+                    <h3>Actividad Reciente</h3>
+                </div>
+                <div class="card-content">
+                    <div class="activity-list" id="activityList">
+                        
+                        <div class="activity-item">
+                        <div class="activity-icon phone">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-text">Nueva llamada a Ana Martínez</div>
+                            <div class="activity-time">5 min</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon user">
+                            <img class="done-all-alt-round" src="person-add0.svg" />
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-text">Nuevo prospecto registrado</div>
+                            <div class="activity-time">15 min</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon client">
+                            <img class="done-all-alt-round" src="person-check0.svg" />
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-text">Prospecto registrado como cliente</div>
+                            <div class="activity-time">1 hora</div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tareas Pendientes -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Tareas Pendientes</h3>
+                    <a href=".\..\Tareas-pendientes\index.html" class="view-all">Ver todas</a>
+                </div>
+                <div class="card-content">
+                    <div class="tasks-list">
+                        <div class="task-item">
+                            <span class="task-text">Llamar a Juan Pérez</span>
+                            <span class="priority-alta">Alta</span>
+                        </div>
+                        <div class="task-item">
+                            <span class="task-text">Enviar propuesta a María Cortez</span>
+                            <span class="priority-media">Media</span>
+                        </div>
+                        <div class="task-item">
+                            <span class="task-text">Seguimiento Carlos López</span>
+                            <span class="priority-baja">Baja</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Últimos Prospectos -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Últimos Prospectos</h3>
+                    <a href=".\..\Lista_prospectos\index.html" class="view-all">Ver todos</a>
+                </div>
+                <div class="card-content">
+                    <div class="prospect-list" id="recentProspects">
+                        
+                        <div class="prospects-list">
+                            <div class="prospect-item">
+                                <div class="prospect-info">
+                                    <div class="prospect-name">Juan Pérez</div>
+                                    <div class="prospect-email">juan@ejemplo.com</div>
+                                </div>
+                                <span class="prospect-status nuevo">Nuevo</span>
+                            </div>
+                            <div class="prospect-item">
+                                <div class="prospect-info">
+                                    <div class="prospect-name">María García</div>
+                                    <div class="prospect-email">maria@ejemplo.com</div>
+                                </div>
+                                <span class="prospect-status nuevo">Nuevo</span>
+                            </div>
+                            <div class="prospect-item">
+                                <div class="prospect-info">
+                                    <div class="prospect-name">Carlos López</div>
+                                    <div class="prospect-email">carlos@ejemplo.com</div>
+                                </div>
+                                <span class="prospect-status nuevo">Nuevo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensajes Recientes -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Mensajes Recientes</h3>
+                    <a href=".\..\BandejaEntrada\index.html" class="view-all">Ver todos</a>
+                </div>
+                <div class="card-content">
+                    <div class="message-list" id="recentMessages">
+                        
+                        <div class="message-item">
+                        <div class="message-info">
+                            <div class="message-sender">Ana Martínez</div>
+                            <div class="message-subject">Consulta sobre plan</div>
+                        </div>
+                        <div class="message-date">
+                            <span>2024-01-14</span>
+                            <img class="done-all-alt-round" src="done-all-alt-round0.svg" />
+                        </div>
+                    </div>
+                    <div class="message-item">
+                        <div class="message-info">
+                            <div class="message-sender">Carlos López</div>
+                            <div class="message-subject">Confirmación suscripción</div>
+                        </div>
+                        <div class="message-date">
+                            <span>2024-01-15</span>
+                            <img class="done-all-alt-round" src="done-all-alt-round1.svg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

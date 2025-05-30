@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamCRM - Reportes y Análisis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="reportes.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <div class="logo-text">StreamCRM</div>
+            </div>
+        </div>
+        
+        <nav class="nav-menu">
+            <div class="nav-item ">
+                <a href=".\..\Dashboard\dashboard.html"><img class="frame7" src="frame0.svg" />
+                Panel Principal</a>
+                
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\BandejaEntrada\index.html"><img class="frame7" src="frame2.svg" />
+                Bandeja de Entrada</a>
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\Lista_prospectos\index.html"><img class="frame7" src="frame3.svg" />
+                Gestión Prospectos</a>
+                
+            </div>
+            <div class="nav-item">
+                <a href=".\..\Clientes\clientes.html"><img class="frame7" src="frame4.svg" />
+                Clientes</a>                
+            </div>
+            <div class="nav-item active">
+                <img class="frame8" src="frame5.svg" />
+                Reportes y Análisis
+                
+            </div>
+        </nav>
+
+        <div class="user-profile">
+            <div class="user-avatar">AS</div>
+            <div class="user-info">
+                <h4>Alex Smith</h4>
+                <p>Vendedor Senior</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Reportes y Análisis</h1>
+            <div class="period-selector">
+                <div class="dropdown-container">
+                    <button class="dropdown-btn" id="periodBtn">
+                        <span id="periodText">Anual</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu" id="periodDropdown">
+                        <div class="dropdown-item" data-period="anual">Anual</div>
+                        <div class="dropdown-item" data-period="mensual">Mensual</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <!-- Tendencia por suscripción -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Tendencia por suscripción</h3>
+                    <div class="dropdown-container">
+                        <button class="dropdown-btn small" id="trendYearBtn">
+                            <span id="trendYearText">2017 - 2022</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu" id="trendYearDropdown">
+                            <div class="dropdown-item" data-year="2017-2022">2017 - 2022</div>
+                            <div class="dropdown-item" data-year="2018-2023">2018 - 2023</div>
+                            <div class="dropdown-item" data-year="2019-2024">2019 - 2024</div>
+                            <div class="dropdown-item" data-year="2020-2025">2020 - 2025</div>
+                            <div class="dropdown-item" data-year="2021">2021</div>
+                            <div class="dropdown-item" data-year="2022">2022</div>
+                            <div class="dropdown-item" data-year="2023">2023</div>
+                            <div class="dropdown-item" data-year="2024">2024</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                    <div class="no-data" id="trendNoData" style="display: none;">
+                        <div class="no-data-icon">📊</div>
+                        <div class="no-data-text">No hay datos disponibles para el período seleccionado</div>
+                    </div>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color netflix"></div>
+                        <span>Netflix</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ventas por plan -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Ventas por plan</h3>
+                    <div class="dropdown-container">
+                        <button class="dropdown-btn small" id="salesYearBtn">
+                            <span id="salesYearText">2021</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu" id="salesYearDropdown">
+                            <div class="dropdown-item" data-year="2021">2021</div>
+                            <div class="dropdown-item" data-year="2022">2022</div>
+                            <div class="dropdown-item" data-year="2023">2023</div>
+                            <div class="dropdown-item" data-year="2024">2024</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="horizontal-chart" id="salesChart">
+                        <!-- Sales bars will be generated here -->
+                    </div>
+                    <div class="no-data" id="salesNoData" style="display: none;">
+                        <div class="no-data-icon">📈</div>
+                        <div class="no-data-text">No hay datos de ventas para este año</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medios de contacto -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Medios de contacto</h3>
+                    <div class="dropdown-container">
+                        <button class="dropdown-btn small" id="contactYearBtn">
+                            <span id="contactYearText">2021</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu" id="contactYearDropdown">
+                            <div class="dropdown-item" data-year="2021">2021</div>
+                            <div class="dropdown-item" data-year="2022">2022</div>
+                            <div class="dropdown-item" data-year="2023">2023</div>
+                            <div class="dropdown-item" data-year="2024">2024</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="contactChart"></canvas>
+                    <div class="contact-legend" id="contactLegend">
+                        <!-- Legend items will be generated here -->
+                    </div>
+                    <div class="no-data" id="contactNoData" style="display: none;">
+                        <div class="no-data-icon">📞</div>
+                        <div class="no-data-text">No hay datos de contacto para este año</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Embudo de prospectos -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Embudo de prospectos</h3>
+                    <div class="dropdown-container">
+                        <button class="dropdown-btn small" id="funnelYearBtn">
+                            <span id="funnelYearText">2021</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu" id="funnelYearDropdown">
+                            <div class="dropdown-item" data-year="2021">2021</div>
+                            <div class="dropdown-item" data-year="2022">2022</div>
+                            <div class="dropdown-item" data-year="2023">2023</div>
+                            <div class="dropdown-item" data-year="2024">2024</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="funnel-chart" id="funnelChart">
+                        <!-- Funnel bars will be generated here -->
+                    </div>
+                    <div class="no-data" id="funnelNoData" style="display: none;">
+                        <div class="no-data-icon">🔄</div>
+                        <div class="no-data-text">No hay datos del embudo para este año</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="reportes.js"></script>
+</body>
+</html>

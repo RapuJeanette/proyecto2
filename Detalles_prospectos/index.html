@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreamCRM - Detalle de Prospecto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./prospecto-style.css"/>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">StreamCRM</div>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../Dashboard/dashboard.html" class="nav-item">
+        <img class="frame7" src="frame1.svg" />
+        Panel Principal
+      </a>
+      <a href="../BandejaEntrada/index.html" class="nav-item">
+        <img class="frame7" src="frame2.svg" />
+        Bandeja de Entrada
+      </a>
+       <a href="../Lista_prospectos/index.html" class="nav-item">
+        <img class="frame7" src="frame3.svg" />
+        Gestión Prospectos
+       </a>
+      <a href="../Clientes/clientes.html" class="nav-item">
+        <img class="frame7" src="frame4.svg" />
+        Clientes
+      </a>
+      <a href="../Reportes y Analisis/reportes.html" class="nav-item">
+        <img class="frame8" src="frame5.svg" />
+        Reportes y Análisis
+      </a>
+    </nav>
+
+    <div class="user-profile">
+      <div class="user-avatar">AS</div>
+      <div class="user-info">
+        <h4>Alex Smith</h4>
+        <p>Vendedor Senior</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor principal alineado al sidebar -->
+<div class="main-content" style="display: flex; gap: 32px;">
+
+  <!-- Columna izquierda: Detalle del prospecto -->
+  <div class="prospect-section">
+    <h1 class="page-title">Detalle del Prospecto</h1>
+
+    <div class="prospect-card">
+
+      <div class="prospect-column">
+        <div class="field">
+          <span class="field-label">Nombre</span>
+          <span class="field-value">María Garcia</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Teléfono</span>
+          <span class="field-value">+591 76988965</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Plan de interés</span>
+          <span class="field-value">Plan Premium Individual</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Preferencia de precio</span>
+          <span class="field-value">Bs. 45 - Bs. 65</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Estado</span>
+          <span class="field-value status-contacted">Negociando</span>
+        </div>
+      </div>
+
+      <div class="prospect-column">
+        <div class="field">
+          <span class="field-label">Email</span>
+          <span class="field-value">maria@ejemplo.com</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Dirección</span>
+          <span class="field-value">Av. Alemana, Santa Cruz, Bolivia</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Plataformas actuales</span>
+          <span class="field-value">Netflix, Disney PLus</span>
+        </div>
+        <div class="field">
+          <span class="field-label">Asignado a</span>
+          <span class="field-value">Akex Smith</span>
+        </div>
+      </div>
+
+      <div class="prospect-notes">
+        <h3>Notas</h3>
+        <p>Busca una plataforma con contenido deportivo y series exclusivas.
+          Actualmente comparte una cuenta familiar de Netflix.</p>
+      </div>
+
+      <button class="add-activity-button" id="open-form-button" type="button">Añadir actividad</button>
+
+    </div>
+  </div>
+
+  <!-- Columna derecha: Historial -->
+  <div class="history-section">
+  <h3 class="history-title">Historial de Acciones</h3>
+
+  <div class="current-status-badge">
+    Estado actual: Negociando
+  </div>
+
+  <div class="timeline">
+    <!-- ITEM 1 -->
+    <div class="timeline-item">
+      <div class="timeline-icon">
+        <img src="phone.svg" alt="Llamada" />
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <span class="timeline-time">reciente</span>
+          <span class="timeline-state estado-negociando">Negociando</span>
+        </div>
+        <h4 class="timeline-title">Demostraciòn realizada</h4>
+        <p class="timeline-description">Cliente mostro gran interès durante la demostraciòn del contenido premium deportivo.</p>
+        <div class="timeline-extra">
+          <img src="user.svg" alt="Responsable" class="timeline-extra-icon" />
+          <span class="timeline-extra-label">Programar seguimiento</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 2 -->
+    <div class="timeline-item">
+      <div class="timeline-icon">
+        <img src="send.svg" alt="Correo" />
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <span class="timeline-time">Hace 1h</span>
+          <span class="timeline-state estado-interesado">Interesado</span>
+        </div>
+        <h4 class="timeline-title">Envío de catálogo</h4>
+        <p class="timeline-description">Se envio catálogo detallado de planes premium y contenido deportivo disponible.</p>
+        <div class="timeline-extra">
+          <img src="user.svg" alt="Adjunto" class="timeline-extra-icon" />
+          <span class="timeline-extra-label">Programar demostración</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 3 -->
+    <div class="timeline-item">
+      <div class="timeline-icon">
+        <img src="call.svg" alt="Formulario" />
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <span class="timeline-time">Hace 1 dia</span>
+          <span class="timeline-state estado-interesado">Interesado</span>
+        </div>
+        <h4 class="timeline-title">Primera llamada realizada</h4>
+        <p class="timeline-description">Contacto inicial exitoso. Cliente confirma interes en paquetes deportivos y series exclusivas.</p>
+        <div class="timeline-extra">
+          <img src="user.svg" alt="Verificado" class="timeline-extra-icon" />
+          <span class="timeline-extra-label">Enviar catálogo digital</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-icon">
+        <img src="userc.svg" alt="Formulario" />
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <span class="timeline-time">2025-05-20</span>
+          <span class="timeline-state estado-nuevo">Nuevo</span>
+        </div>
+        <h4 class="timeline-title">Nuevo Prospecto</h4>
+        <p class="timeline-description">Registro via formulario web. Potencial cliente interesado en plan premium deportivo.</p>
+        <div class="timeline-extra">
+          <img src="user.svg" alt="Verificado" class="timeline-extra-icon" />
+          <span class="timeline-extra-label">Realizar llamada inicial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+  <script>
+    const historyData = [
+      {
+        type: "call",
+        title: "Llamada realizada",
+        description: "Se realizó llamada inicial para presentar servicios",
+        time: "2025-01-24 10:00",
+      },
+      {
+        type: "email",
+        title: "Email enviado",
+        description: "Se envió cotización y propuesta comercial",
+        time: "2025-01-22 14:45",
+      },
+      {
+        type: "meeting",
+        title: "Reunión agendada",
+        description: "Reunión virtual para revisión de requisitos",
+        time: "2025-01-20 09:30",
+      }
+    ];
+
+    document.addEventListener("DOMContentLoaded", function () {
+      renderHistory();
+    });
+
+    function renderHistory() {
+      const container = document.getElementById("historyList");
+      container.innerHTML = historyData.map((item) => `
+        <div class="history-item">
+          <div class="history-icon ${item.type}">
+            ${getIcon(item.type)}
+          </div>
+          <div class="history-content">
+            <div class="history-title">${item.title}</div>
+            <div class="history-description">${item.description}</div>
+            <div class="history-time">${formatTime(item.time)}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function getIcon(type) {
+      const icons = {
+        call: "icon-call.svg",
+        email: "icon-email.svg",
+        meeting: "icon-meeting.svg",
+      };
+      const src = icons[type] || "icon-default.svg";
+      return `<img src="${src}" class="svg-icon" alt="${type}">`;
+    }
+
+    function formatTime(timeStr) {
+      const date = new Date(timeStr);
+      return date.toLocaleString("es-ES", {
+        day: "2-digit",
+        month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    }
+
+    const rutas = {
+    "Nuevo": "/Form_nuevo/index.html",
+    "Interesado": "/Form_agendar/index.html",
+    "Negociando": "/Form_negociacion/index.html",
+    "Aceptado": "/Form_aceptado/index.html",
+    "Rechazado": "/Form_rechazado/index.html",
+    "Espera": "/Form_espera/index.html"
+  };
+
+  // Espera a que el DOM esté cargado
+  document.addEventListener("DOMContentLoaded", function () {
+    const boton = document.querySelector(".add-activity-button");
+
+    if (boton) {
+      boton.addEventListener("click", function () {
+        // Buscar el texto del estado actual
+        const estadoSpan = document.querySelector(".field-value.status-contacted");
+
+        if (estadoSpan) {
+          const estado = estadoSpan.textContent.trim();
+          const ruta = rutas[estado];
+
+          if (ruta) {
+            // Redirigir al formulario correspondiente
+            window.location.href = ruta;
+          } else {
+            alert("No se pudo determinar el estado del prospecto.");
+          }
+        } else {
+          alert("No se encontró el estado del prospecto.");
+        }
+      });
+    }
+  });
+  </script>
+</body>
+</html>

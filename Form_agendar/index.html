@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreamCRM - Agendar Reunion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./agendar-style.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">StreamCRM</div>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../Dashboard/dashboard.html" class="nav-item">
+        <img class="frame7" src="frame1.svg" />
+        Panel Principal
+      </a>
+      <a href="/BandejaEntrada/index.html" class="nav-item">
+        <img class="frame7" src="frame2.svg" />
+        Bandeja de Entrada
+      </a>
+       <a href="/Lista_prospectos/index.html" class="nav-item">
+        <img class="frame7" src="frame3.svg" />
+        Gestión Prospectos
+       </a>
+      <a href="../Clientes/clientes.html" class="nav-item">
+        <img class="frame7" src="frame4.svg" />
+        Clientes
+      </a>
+      <a href="../Reportes y Analisis/reportes.html" class="nav-item">
+        <img class="frame8" src="frame5.svg" />
+        Reportes y Análisis
+      </a>
+    </nav>
+
+    <div class="user-profile">
+      <div class="user-avatar">AS</div>
+      <div class="user-info">
+        <h4>Alex Smith</h4>
+        <p>Vendedor Senior</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="agenda-container">
+    <h2 class="agenda-title">Agendar Reunión</h2>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Prospecto</label>
+      <p class="agenda-subtext">María García – maria@ejemplo.com</p>
+    </div>
+
+    <div class="agenda-grid">
+      <div class="agenda-field">
+        <label>Fecha de reunión</label>
+        <input type="date" class="input-field"  id="fechaReunion" />
+      </div>
+      <div class="agenda-field">
+        <label>Hora</label>
+        <input type="time" class="input-field" min="08:00" max="18:00"/>
+      </div>
+    </div>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Medio de reunión</label>
+      <div class="medio-opciones">
+        <button class="medio-btn">
+          <svg fill="#000000" width="24px" height="24px" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"
+            style="margin-right: 6px; vertical-align: middle;">
+            <path
+              d="M128.00049,28A100.02594,100.02594,0,0,0,41.11475,177.53908l-9.0044,31.51661a11.99971,11.99971,0,0,0,14.835,14.834l31.5166-9.00391A100.00677,100.00677,0,1,0,128.00049,28Zm0,192a91.87082,91.87082,0,0,1-46.95264-12.86719,3.99494,3.99494,0,0,0-3.14355-.4082l-33.15723,9.47363a3.99979,3.99979,0,0,1-4.94434-4.94531l9.47266-33.15625a4.00111,4.00111,0,0,0-.4082-3.14355A92.01077,92.01077,0,1,1,128.00049,220Zm50.51123-73.457-20.45947-11.69141a12.01054,12.01054,0,0,0-12.12745.12891l-13.80664,8.28418a44.04183,44.04183,0,0,1-19.38232-19.38281l8.28369-13.80664a12.0108,12.0108,0,0,0,.12891-12.127l-11.69092-20.46A10.91584,10.91584,0,0,0,100,72a32.00811,32.00811,0,0,0-32,31.88086A84.001,84.001,0,0,0,151.999,188h.12012A32.00842,32.00842,0,0,0,184,156,10.913,10.913,0,0,0,178.51172,146.543Z">
+            </path>
+          </svg>
+          WhatsApp
+        </button>
+
+
+        <button class="medio-btn">
+          <img src="email.svg" alt="Correo" /> Correo
+        </button>
+        <button class="medio-btn">
+          <img src="llamada.svg" alt="Llamada" /> Llamada
+        </button>
+      </div>
+    </div>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Notas de preparación</label>
+      <textarea class="input-field" rows="3" placeholder="Escribe tus notas..."></textarea>
+    </div>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Actualizar estado</label>
+      <select class="input-field">
+        <option value="">Seleccionar estado</option>
+        <option value="Nuevo" disabled>Nuevo</option>
+        <option>Interesado</option>
+        <option>Negociando</option>
+        <option>Aceptado</option>
+        <option>Rechazado</option>
+        <option>En espera</option>
+      </select>
+    </div>
+
+    <div class="agenda-buttons">
+      <button class="btn guardar-btn">Guardar</button>
+      <button class="btn cancelar-btn">Cancelar</button>
+    </div>
+  </div>
+  </div>
+
+  <script>
+  // Establecer la fecha mínima como hoy
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("fechaReunion").setAttribute("min", today);
+</script>
+</body>
+
+</html>

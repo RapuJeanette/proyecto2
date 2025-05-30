@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreamCRM - Formulario de Espera</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./agendar-style.css" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">S</div>
+        <div class="logo-text">StreamCRM</div>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="../Dashboard/dashboard.html" class="nav-item">
+        <img class="frame7" src="frame1.svg" />
+        Panel Principal
+      </a>
+      <a href="/BandejaEntrada/index.html" class="nav-item">
+        <img class="frame7" src="frame2.svg" />
+        Bandeja de Entrada
+      </a>
+       <a href="/Lista_prospectos/index.html" class="nav-item">
+        <img class="frame7" src="frame3.svg" />
+        Gestión Prospectos
+       </a>
+      <a href="../Clientes/clientes.html" class="nav-item">
+        <img class="frame7" src="frame4.svg" />
+        Clientes
+      </a>
+      <a href="../Reportes y Analisis/reportes.html" class="nav-item">
+        <img class="frame8" src="frame5.svg" />
+        Reportes y Análisis
+      </a>
+    </nav>
+
+    <div class="user-profile">
+      <div class="user-avatar">AS</div>
+      <div class="user-info">
+        <h4>Alex Smith</h4>
+        <p>Vendedor Senior</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="agenda-container">
+    <h2 class="agenda-title">Formulario de Espera</h2>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Prospecto</label>
+      <p class="agenda-subtext">Lucía Torres – lucia@ejemplo.com</p>
+    </div>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Medio de comunicación</label>
+      <select class="input-field">
+        <option value="">Seleccionar medio</option>
+        <option>WhatsApp</option>
+        <option>Correo electrónico</option>
+        <option>Llamada</option>
+        <option>Messenger</option>
+      </select>
+    </div>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Servicio interesado</label>
+      <select class="input-field">
+        <option value="">Seleccionar servicio</option>
+        <option>Netflix</option>
+        <option>Max</option>
+        <option>Disney+</option>
+        <option>Amazon Prime</option>
+        <option>HBO</option>
+      </select>
+    </div>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Detalles de lo enviado</label>
+      <textarea class="input-field" style="height: 120px;" placeholder="Escribe aquí los detalles..."></textarea>
+    </div>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Archivos adjuntos</label>
+      <input type="file" class="input-field" multiple accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xls,.xlsx,.txt" />
+    </div>
+
+    <div class="agenda-section">
+      <label class="agenda-label">Actualizar estado</label>
+      <select class="input-field">
+        <option value="">Seleccionar estado</option>
+        <option value="Nuevo" disabled>Nuevo</option>
+        <option>Interesado</option>
+        <option>Negociando</option>
+        <option>Aceptado</option>
+        <option>Rechazado</option>
+        <option>En espera</option>
+      </select>
+    </div>
+
+    <div class="agenda-buttons">
+      <button class="btn guardar-btn">Guardar</button>
+      <button class="btn cancelar-btn">Cancelar</button>
+    </div>
+  </div>
+</body>
+
+</html>
